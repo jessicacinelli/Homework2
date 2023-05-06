@@ -19,18 +19,20 @@ distances<- dist(data, method="euclidean")
 fit <- hclust(distances, method="ward.D")
 
 #plot del dendrogramma
-plot(fit)
-
+plot(fit, labels = FALSE, hang=(-1))
+abline(h=1.3e11, col="red",  lty=2)
 #zoom del plot
-#plot(as.dendrogram(fit), ylim = c(0,200000000000))
-
+#plot(as.dendrogram(fit), ylim = c(0,10000000000), leaflab="none")
+#plot(dendrogramma, ylim = c(0,200000000000), labels = FALSE, hang=(-1))
 # utilizziamo la funzione rect.hclust per mettere i rettangoli
 #k è il numero di cluster che individuiamo guardando il dendrogramma
 rect.hclust(fit, k=3, border = "blue")
-
+legend( x="topright", 
+        legend=c("Taglio delle partizioni", "k cluster"),
+        col=c("red","blue"), lwd=1, cex=0.7)
 #Taglio dell'albero: 
 #l’uscita è fornita come identificativo del cluster di appartenenza per ogni punto.
-groups<- cutree(fit, k=3)
+groups<- cutree(fit, k=4)
 
 g <- hcut(data, k = 3,
             hc_func = "hclust", hc_method = "ward")
@@ -59,7 +61,6 @@ axis(1,at=h$mids,seq(min(df),max(df)))
 
 
 ################## CLUSTERING K-MEANS ################## 
-#lettura dei dati flows.csv
 data<- read.csv('flows/flows1.csv')
 #definiamo un vettore di 10 elementi con un id crescente (tss=total squares sum): 
 #ipotizziamo di testare fino a 10 cluster (k=10)
