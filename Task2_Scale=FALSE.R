@@ -34,7 +34,7 @@ fviz_pca_var(data.pca, col.var = "contrib",
                 theme(plot.title = element_text(hjust = 0.5))
 
 #Total cos2 of variables on Dim.1 and Dim.2
-fviz_cos2(data.pca, choice = "var", axes = 1:2,
-          title="Quality of representation (cos2) - scale = FALSE")+ 
+fviz_cos2(data.pca, choice = "var", axes = 1:2, ylim=c(0,1),
+          title="Quality of representation (cos2) - scale = FALSE", addlabels=TRUE)+ 
             theme(plot.title = element_text(hjust = 0.5))
 
