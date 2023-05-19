@@ -55,6 +55,7 @@ fviz_cluster(res, data.translated,  geom = c("point"),
               aes(x = res$centers[,1], y =res$centers[,2] ), 
               size = 5, shape = 8)
 
+
 clusters<-table(res$cluster)<10
 
 

@@ -9,10 +9,13 @@ data.pca <- prcomp(data, scale=FALSE)
 
 eig.val <- get_eigenvalue(data.pca)
 eig.val
+
+
 #screeplot: i seguenti metodi sono identici
 fviz_screeplot(data.pca, addlabels=TRUE,
                title="Scree plot - scale = FALSE") +
                 theme(plot.title = element_text(hjust = 0.5))
+
 fviz_eig(data.pca, addlabels = TRUE, 
          title="Scree plot - scale = FALSE") + 
           theme(plot.title = element_text(hjust = 0.5))
@@ -37,7 +40,4 @@ fviz_pca_var(data.pca, col.var = "contrib",
 fviz_cos2(data.pca, choice = "var", axes = 1:2, 
           title="Quality of representation (cos2) - scale = FALSE", addlabels=TRUE)+ 
             theme(plot.title = element_text(hjust = 0.5))
-data.pca
-var <- get_pca_var(data.pca)
-var$cos2
-corrplot(var$cos2, is.corr = FALSE)
+
